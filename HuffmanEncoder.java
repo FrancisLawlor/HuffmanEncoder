@@ -4,6 +4,8 @@ class HuffmanEncoder {
 	public static LinkedList<Code> generateHuffmanCode(LinkedList<Double> pmf, int D) {
 		LinkedList<Code> codes = new LinkedList<Code>();
 		LinkedList<Node> nodes = new LinkedList<Node>();
+		LinkedList<String> codeValueStrings = new LinkedList<String>();
+		LinkedList<String> huffmanCodeStrings = new LinkedList<String>();
 
 		for (int i = 0; i < pmf.size(); i++) {
 			nodes.add(new Node(pmf.get(i)));
@@ -12,11 +14,7 @@ class HuffmanEncoder {
 		addDummyNodes(nodes, D);
 		sortNodes(nodes);
 
-		LinkedList<String> codeValues = new LinkedList<String>();
-
-		for (Node node: nodes) {
-			codeValues.add(Double.toString(node.getNodeVal()));
-		}
+		storeCodeValueStrings(nodes, codeValueStrings);
 
 		while (nodes.size() != 1) {
 			sortNodes(nodes);
@@ -40,10 +38,10 @@ class HuffmanEncoder {
 			nodes.add(newParent);
 		}
 
-		LinkedList<String> codeStrings = depthFirstSearch(nodes.get(0));
+		huffmanCodeStrings = generateHuffmanCodeStrings(nodes.get(0));
 
-		for (int i = 0; i < codeValues.size(); i++) {
-			codes.add(new Code(codeValues.get(codeValues.size() - 1 - i), codeStrings.get(i)));
+		for (int i = 0; i < codeValueStrings.size(); i++) {
+			codes.add(new Code(codeValueStrings.get(codeValueStrings.size() - 1 - i), huffmanCodeStrings.get(i)));
 		}
 
 		return codes;
@@ -61,10 +59,11 @@ class HuffmanEncoder {
 		}
 	}
 
-	private static LinkedList<String> depthFirstSearch(Node root) {
-		LinkedList<Node> nodesToVisit = new LinkedList<Node>();
-		nodesToVisit.add(root);
+	private static LinkedList<String> generateHuffmanCodeStrings(Node root) {
 		LinkedList<String> codeStrings = new LinkedList<String>();
+		LinkedList<Node> nodesToVisit = new LinkedList<Node>();
+
+		nodesToVisit.add(root);
 
 		while (!nodesToVisit.isEmpty()) {
 			Node currentNode = nodesToVisit.get(0);
@@ -95,6 +94,12 @@ class HuffmanEncoder {
 	private static void addDummyNodes(LinkedList<Node> currentNodes, int D) {
 		while (((currentNodes.size() - 1) / ((float) D - 1)) % 1 != 0) {
 			currentNodes.add(new Node(0.0));
+		}
+	}
+
+	private static void storeCodeValueStrings(LinkedList<Node> nodes, LinkedList<String> codeValueStrings) {
+		for (Node node: nodes) {
+			codeValueStrings.add(Double.toString(node.getNodeVal()));
 		}
 	}
 }
