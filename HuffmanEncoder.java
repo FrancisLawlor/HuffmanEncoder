@@ -1,24 +1,21 @@
 import java.util.*;
 
-class HuffmanCode {
+class HuffmanEncoder {
 	public static LinkedList<String> generateHuffmanCode(LinkedList<Double> pmf, int D) {
-		// Add dummy nodes if required.
-		while (((pmf.size() - 1) / ((float) D - 1)) % 1 != 0) {
-			pmf.add(0.0);
-		}
-
-		// Construct nodes.
 		LinkedList<Node> nodes = new LinkedList<Node>();
 
 		for (int i = 0; i < pmf.size(); i++) {
 			nodes.add(new Node(pmf.get(i)));
 		}
 
+		addDummyNodes(nodes, D);
+
 		while (nodes.size() != 1) {
 			sortNodes(nodes);
 
 			// Create new node and add D smallest elements as children.
 			Node newParent = new Node(0.0);
+			
 			for (int i = 0; i < D; i++) {
 				newParent.addChild(nodes.get(nodes.size() - 1));
 				newParent.setNodeVal(newParent.getNodeVal() + nodes.get(nodes.size() - 1).getNodeVal());
@@ -50,7 +47,7 @@ class HuffmanCode {
 		}
 	}
 
-	public static LinkedList<String> depthFirstSearch(Node root) {
+	private static LinkedList<String> depthFirstSearch(Node root) {
 		LinkedList<Node> nodes_to_visit = new LinkedList<Node>();
 		nodes_to_visit.add(root);
 		LinkedList<String> output = new LinkedList<String>();
@@ -79,24 +76,9 @@ class HuffmanCode {
 		return output;
 	}
 
-	public static void main(String[] args) {
-		LinkedList<Double> input = new LinkedList<Double>();
-
-		input.add(0.25);
-		input.add(0.25);
-		input.add(0.2);
-		input.add(0.1);
-		input.add(0.1);
-		input.add(0.1);
-
-		LinkedList<String> codes = generateHuffmanCode(input, 3);
-
-		System.out.println("P\tCode\tLength");
-
-		Collections.sort(input);
-
-		for (int i = 0; i < input.size(); i++) {
-			System.out.println(input.get(i) + "\t" + codes.get(i) + "\t" + codes.get(i).length());
+	private static void addDummyNodes(LinkedList<Node> currentNodes, int D) {
+		while (((currentNodes.size() - 1) / ((float) D - 1)) % 1 != 0) {
+			currentNodes.add(new Node(0.0));
 		}
 	}
 }
