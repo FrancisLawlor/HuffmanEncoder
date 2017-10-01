@@ -2,7 +2,12 @@
 
 Utilises a simple Depth First Search in order to [encode](https://en.wikipedia.org/wiki/Huffman_coding) a random variable.
 
-**Example:**
+*Parameters:*
+
+* PMF of random variable.
+* Size of alphabet to encode with.
+
+**Example with alphabet of size 3:**
 
 | P    | Code |
 |------|------|
