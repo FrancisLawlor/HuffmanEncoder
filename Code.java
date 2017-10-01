@@ -1,3 +1,8 @@
+/**
+ * This class stores the information required for outputting the Huffman Code.
+ *
+ * @author Francis Lawlor
+ */
 public class Code {
   private String value;
   private String huffmanCode;

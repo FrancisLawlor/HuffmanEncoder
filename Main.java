@@ -1,5 +1,10 @@
 import java.util.*;
 
+/**
+ * Simple class for demonstrating use of the HuffmanEncoder.
+ *
+ * @author Francis Lawlor
+ */
 public class Main {
   public static void main(String[] args) {
 		LinkedList<Double> input = new LinkedList<Double>();

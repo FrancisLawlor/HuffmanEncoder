@@ -1,5 +1,11 @@
 import java.util.*;
 
+/**
+ * This class contains the data and methods needed for constructing a tree needed
+ * for generating the Huffman codes.
+ *
+ * @author Francis Lawlor
+ */
 public class Node {
 	private LinkedList<Node> children = new LinkedList<Node>();
 	private double val;
