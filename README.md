@@ -2,12 +2,7 @@
 
 Utilises a simple Depth First Search in order to [encode](https://en.wikipedia.org/wiki/Huffman_coding) a random variable.
 
-*Parameters:*
-
-* PMF of random variable.
-* Size of alphabet to encode with.
-
-**Example with alphabet of size 3:**
+**Example code with alphabet of size 3:**
 
 | P    | Code |
 |------|------|
@@ -21,8 +16,19 @@ Utilises a simple Depth First Search in order to [encode](https://en.wikipedia.o
 | 0.26 | 0001 |
 | 0.27 | 0002 |
 
-**Run Program:**
+#### Compile program:
 
-```>javac HuffmanEncoder.java Node.java Code.java Main.java```
+```
+> javac HuffmanEncoder.java Node.java Code.java Main.java
+```
 
-```>java Main```
+#### Run program:
+
+```
+> java Main
+```
+
+**Parameters:**
+
+- PMF of random variable.
+- Size of alphabet to encode with.
