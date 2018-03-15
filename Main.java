@@ -10,13 +10,13 @@ public class Main {
 		LinkedList<Double> input = new LinkedList<Double>();
 
 		input.add(0.27);
-		input.add(0.26);
+    input.add(0.26);
     input.add(0.23);
     input.add(0.11);
-		input.add(0.04);
-		input.add(0.04);
-		input.add(0.03);
-		input.add(0.02);
+    input.add(0.04);
+    input.add(0.04);
+    input.add(0.03);
+    input.add(0.02);
 
 		LinkedList<Code> codes = HuffmanEncoder.generateHuffmanCode(input, 3);
 

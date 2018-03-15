@@ -6,14 +6,18 @@ import java.util.*;
  *
  * @author Francis Lawlor
  */
-public class Node {
+public class Node implements Comparator<Node> {
 	private LinkedList<Node> children = new LinkedList<Node>();
 	private double val;
 	private Node parent;
 	private int index;
 
-	Node(double val) {
+	public Node(double val) {
 		this.val = val;
+	}
+
+	public Node() {
+
 	}
 
 	public Node getParent() {
@@ -49,15 +53,11 @@ public class Node {
 		return this.val;
 	}
 
+	public int compare(Node node1, Node node2) {
+		return Double.compare(node1.getNodeVal(), node2.getNodeVal());
+	}
+
 	public void sortChildren() {
-		for (int i = 0; i < children.size(); i++) {
-			for (int j = i + 1; j < children.size(); j++) {
-				if (children.get(i).getNodeVal() < children.get(j).getNodeVal()) {
-					double temp = children.get(j).getNodeVal();
-					children.get(j).setNodeVal(children.get(i).getNodeVal());
-					children.get(i).setNodeVal(temp);
-				}
-			}
-		}
+		Collections.sort(this.children, new Node());
 	}
 }

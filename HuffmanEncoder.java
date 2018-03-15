@@ -20,10 +20,10 @@ class HuffmanEncoder {
 	 * @param D the size of the alphabet used to encode the random variable
 	 */
 	public static LinkedList<Code> generateHuffmanCode(LinkedList<Double> pmf, int D) {
-		LinkedList<Code> codes = new LinkedList<Code>();
-		LinkedList<Node> nodes = new LinkedList<Node>();
-		LinkedList<String> codeValueStrings = new LinkedList<String>();
-		LinkedList<String> huffmanCodeStrings = new LinkedList<String>();
+		private LinkedList<Code> codes = new LinkedList<Code>();
+		private LinkedList<Node> nodes = new LinkedList<Node>();
+		private LinkedList<String> codeValueStrings = new LinkedList<String>();
+		private LinkedList<String> huffmanCodeStrings = new LinkedList<String>();
 
 		for (int i = 0; i < pmf.size(); i++) {
 			nodes.add(new Node(pmf.get(i)));
