@@ -6,7 +6,7 @@ import java.util.*;
  *
  * @author Francis Lawlor
  */
-public class Node implements Comparator<Node> {
+public class Node implements Comparable<Node> {
 	private LinkedList<Node> children = new LinkedList<Node>();
 	private double val;
 	private Node parent;
@@ -53,11 +53,11 @@ public class Node implements Comparator<Node> {
 		return this.val;
 	}
 
-	public int compare(Node node1, Node node2) {
-		return Double.compare(node1.getNodeVal(), node2.getNodeVal());
+	public int compareTo(Node otherNode) {
+		return Double.valueOf(this.getNodeVal()).compareTo(Double.valueOf(otherNode.getNodeVal()));
 	}
 
 	public void sortChildren() {
-		Collections.sort(this.children, new Node());
+		Collections.sort(this.children);
 	}
 }
